@@ -6,15 +6,6 @@
 #include "vec2.hpp"
 
 
-//Vec2& Vec2::operator+(Vec2 const& v){
-//    Vec2 vec2;
-//    vec2.x = this ->x +v.x;
-//    vec2.y = this ->y +v.y;
-//    return vec2;
-//
-//};
-
-
 Vec2& Vec2::operator+=(Vec2 const& v){
     x += v.x;
     y += v.y;
@@ -42,10 +33,26 @@ Vec2& Vec2::operator/=(float s){
 
 };
 
-//int main()
-//{
-//    Vec2 a;
-//    Vec2::operator+=(a); // An example call to "operator+"
-//    std::cout << a.x;
-//    return 0;
-//}
+
+
+Vec2 operator+(Vec2 const& u, Vec2 const& v){
+
+    return Vec2{u} += v;
+
+};
+
+Vec2 operator-(Vec2 const& u, Vec2 const& v){
+    return Vec2{u} -= v;
+}
+
+Vec2 operator*(Vec2 const& v, float s){
+    return Vec2{v} *= s;
+}
+
+Vec2 operator/(Vec2 const& v, float s){
+    return Vec2{v} /= s;
+}
+
+Vec2 operator*(float s, Vec2 const& v){
+    return Vec2{v} *= s;
+}
