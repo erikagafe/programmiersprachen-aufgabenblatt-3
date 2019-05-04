@@ -18,7 +18,12 @@ add_executable(tests
   tests.cpp
   vec2.cpp
   mat2.cpp
-  )
+  color.hpp
+  rectangle.hpp
+  rectangle.cpp
+  circle.cpp
+  circle.hpp
+        )
 target_link_libraries(tests
   glfw
   ${GLFW_LIBRARIES}

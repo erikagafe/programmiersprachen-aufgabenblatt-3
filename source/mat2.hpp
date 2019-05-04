@@ -18,10 +18,10 @@ struct Mat2 {
 
     // e_00  e_01
     // e_10  e_11
-    float e_00 = 0.0f;
-    float e_10 = 0.0f;
-    float e_01 = 0.0f;
-    float e_11 = 0.0f;
+    float e_00 =1.0f;
+    float e_10 =0.0f;
+    float e_01 =0.0f;
+    float e_11 =1.0f;
 
     Mat2 &operator*=(Mat2 const &m);
 };
