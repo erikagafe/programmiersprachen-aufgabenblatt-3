@@ -5,6 +5,7 @@
 #include <iostream>
 #include "color.hpp"
 #include "vec2.hpp"
+#include "window.hpp"
 using namespace std;
 
 #ifndef BLATT2_RECTANGLE_HPP
@@ -24,9 +25,10 @@ class Rectangle {
 
     public:
         Rectangle ();
-        Rectangle(Vec2 const& min_, Vec2 const & max_,  Color const& color_);
+        Rectangle(Vec2 const& min_, Vec2 const& max_, Color const& color_);
         float area () const ;
         float circumference () const ;
+        void draw(Window const& win) const;
 
 
 };

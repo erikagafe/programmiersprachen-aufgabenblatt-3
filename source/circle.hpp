@@ -9,6 +9,7 @@
 #include "vec2.hpp"
 #include <cmath>
 #include <iostream>
+#include "window.hpp"
 
 
 class Circle {
@@ -23,6 +24,7 @@ class Circle {
         Circle(Vec2 const& position, float const& radius, Color const& color);
         float circumference() const;
         float area() const;
+        void draw (Window const& win) const;
 
 };
 
