@@ -29,6 +29,7 @@ class Rectangle {
         float area () const ;
         float circumference () const ;
         void draw(Window const& win) const;
+        void draw(Window const& win, float thickness) const;
 
 
 };

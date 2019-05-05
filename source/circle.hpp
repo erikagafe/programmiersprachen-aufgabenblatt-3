@@ -25,6 +25,7 @@ class Circle {
         float circumference() const;
         float area() const;
         void draw (Window const& win) const;
+        void draw (Window const& win, float thickness) const;
 
 };
 

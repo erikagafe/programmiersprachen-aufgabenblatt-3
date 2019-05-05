@@ -21,6 +21,27 @@ float Circle::area() const {
     return radius_ * radius_ * M_PI;
 }
 
+void Circle::draw(Window const &win, float thickness) const {
+    float theta;
+    float delta = M_PI / 36.0f;
+
+    float xp, xn;
+    float yp, yn;
+    float old_theta;
+    float new_theta;
+
+    for (theta = 0.0f; theta <= (2 * M_PI); theta = theta + delta) {
+        old_theta = theta;
+        new_theta = theta + delta;
+        xp = cosf(old_theta) * radius_ + position_.x;
+        yp = sinf(old_theta) * radius_ + position_.y;
+        xn = cosf(new_theta) * radius_ + position_.x;
+        yn = sinf(new_theta) * radius_ + position_.y;
+        win.draw_line(xp,yp, xn, yn, color_.r, color_.g, color_.b, thickness);
+    }
+
+}
+
 void Circle::draw(Window const &win) const {
     float theta;
     float delta = M_PI / 36.0f;
@@ -41,7 +62,6 @@ void Circle::draw(Window const &win) const {
     }
 
 }
-
 
 
 

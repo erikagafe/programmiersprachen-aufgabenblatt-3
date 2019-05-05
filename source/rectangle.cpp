@@ -20,10 +20,17 @@ float Rectangle::circumference () const {
 
 }
 
+void Rectangle::draw(Window const& win, float thickness) const {
+    win.draw_line(min_.x, min_.y,max_.x,min_.y,color_.r, color_.g, color_.b, thickness);
+    win.draw_line(min_.x, min_.y,min_.x,max_.y,color_.r, color_.g, color_.b,thickness);
+    win.draw_line(max_.x, min_.y,max_.x,max_.y,color_.r, color_.g, color_.b,thickness);
+    win.draw_line(min_.x, max_.y,max_.x,max_.y,color_.r, color_.g, color_.b, thickness);
+}
+
+
 void Rectangle::draw(Window const& win) const {
     win.draw_line(min_.x, min_.y,max_.x,min_.y,color_.r, color_.g, color_.b);
     win.draw_line(min_.x, min_.y,min_.x,max_.y,color_.r, color_.g, color_.b);
     win.draw_line(max_.x, min_.y,max_.x,max_.y,color_.r, color_.g, color_.b);
     win.draw_line(min_.x, max_.y,max_.x,max_.y,color_.r, color_.g, color_.b);
 }
-

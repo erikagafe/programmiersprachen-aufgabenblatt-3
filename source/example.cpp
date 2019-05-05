@@ -57,10 +57,14 @@ int main(int argc, char *argv[]) {
         win.draw_text(text_offset_x, text_offset_y, font_size, display_text);
 
         Rectangle r = Rectangle(Vec2{50.0f, 50.0f}, Vec2{500.0f, 500.0f}, Color{1.0f, 0.0f, 1.0f});
-        r.draw(win);
+        r.draw(win, 50.0f);
+        Rectangle re = Rectangle(Vec2{75.0f, 750.0f}, Vec2{250.0f, 250.0f}, Color{0.0f, 0.0f, 1.0f});
+        re.draw(win);
 
         Circle c = Circle(Vec2{250.0f,250.0f}, 50.0f, Color{1.0f,1.0f,0.0f});
         c.draw(win);
+        Circle ci = Circle(Vec2{250.0f,250.0f}, 25.0f, Color{1.0f,0.0f,0.0f});
+        ci.draw(win, 10.0f);
 
         win.update();
     }
