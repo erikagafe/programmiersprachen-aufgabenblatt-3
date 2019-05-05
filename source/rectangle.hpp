@@ -16,17 +16,17 @@ class Rectangle {
 
 
     private:
-        Vec2 min_ ;
-        Vec2 max_ ;
+        Vec2 min_;
+        Vec2 max_;
         float length_  = 0.0f;
         float width_   = 0.0f;
         Color color_;
 
     public:
         Rectangle ();
-        Rectangle (Vec2 min_, Vec2 max_, Color color_);
+        Rectangle(Vec2 const& min_, Vec2 const & max_,  Color const& color_);
         float area () const ;
-        float perimeter () const ;
+        float circumference () const ;
 
 
 };

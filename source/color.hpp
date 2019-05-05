@@ -9,9 +9,10 @@
 
 
 struct Color{
+
     float r = 0.45f;
     float g = 0.45f;
-    floar b = 0.45f;
+    float b = 0.45f;
 
 };
 

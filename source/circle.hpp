@@ -21,7 +21,7 @@ class Circle {
     public:
         Circle();
         Circle(Vec2 const& position, float const& radius, Color const& color);
-        float perimeter() const;
+        float circumference() const;
         float area() const;
 
 };

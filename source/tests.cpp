@@ -2,6 +2,9 @@
 #include <catch.hpp>
 #include "vec2.hpp"
 #include "mat2.hpp"
+#include "color.hpp"
+#include "circle.hpp"
+#include "rectangle.hpp"
 using namespace std;
 
 int main(int argc, char *argv[])
@@ -10,6 +13,8 @@ int main(int argc, char *argv[])
 }
 
 
+
+/* Test cases for Vec2 */
 TEST_CASE("vec2", "[Vec2]"){
     Vec2 a;
     Vec2 b{5.1f, -9.3f};
@@ -84,6 +89,9 @@ TEST_CASE("Vec2 operator* float", "[Vec2 operator*]"){
     REQUIRE(c.y == -23.25f);
 };
 
+
+/* Test cases for Mat2*/
+
 TEST_CASE("Mat2 operator*=", "[Mat2 operator*=]"){
     Mat2 a{2,6,4,8};
     Mat2 b{2,6,4,8};
@@ -143,4 +151,32 @@ TEST_CASE("Mat2 make_rotation_mat2", "[Mat2 make_rotation_mat2]"){
     REQUIRE(rot.e_10 == Approx(0.71735609f).epsilon(0.001));
     REQUIRE(rot.e_01==  Approx(-0.71735609f).epsilon(0.001));
     REQUIRE(rot.e_11==  Approx(0.69670671f).epsilon(0.001));
-};git
+};
+
+
+TEST_CASE("Color color", "[color]"){
+    Color a;
+    REQUIRE(0.45f == a.r);
+    REQUIRE(0.45f == a.g);
+    REQUIRE(0.45f == a.b);
+};
+
+
+TEST_CASE("Circle Circumference", "[Circle Circumference]"){
+    Circle c = Circle(Vec2{}, 2.0f, Color {});
+    Circle b = Circle(Vec2{2.3f, 5.5f }, 4.0f, Color {});
+    Circle d = Circle(Vec2{}, 0.0000001f, Color {});
+
+    REQUIRE(Approx(c.circumference()) == 2 * 2 * M_PI);
+    REQUIRE(b.circumference() ==  Approx(25.1328).epsilon(0.1));
+    REQUIRE_THROWS(d.circumference());
+};
+
+TEST_CASE("Rectangle Circumference", "[Rectangle Circumference]"){
+    Rectangle c = Rectangle(Vec2 {2.0f,2.0f}, Vec2 {4.0f,4.0f},  Color {});
+    Rectangle b = Rectangle(Vec2 {0.0f,0.0f}, Vec2 {4.0f,4.0f},  Color {});
+    REQUIRE(c.circumference() ==  Approx(8.0f).epsilon(0.1));
+    REQUIRE(b.circumference() ==  Approx(16.0f).epsilon(0.1));
+
+};
+
