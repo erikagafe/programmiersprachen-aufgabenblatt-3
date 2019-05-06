@@ -30,6 +30,7 @@ class Rectangle {
         float circumference () const ;
         void draw(Window const& win) const;
         void draw(Window const& win, float thickness) const;
+        bool is_inside(Vec2 const& point) const;
 
 
 };

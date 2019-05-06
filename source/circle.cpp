@@ -63,5 +63,12 @@ void Circle::draw(Window const &win) const {
 
 }
 
+bool Circle::is_inside(Vec2 const& point) const{
+    float d_radius = pow(radius_,2.0f);
+    float p= pow((point.x - position_.x),2.0f) + pow((point.y - position_.y),2.0f);
+    return p < d_radius;
+
+}
+
 
 

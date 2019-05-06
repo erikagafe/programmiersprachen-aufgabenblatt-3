@@ -2,12 +2,23 @@
 #include <GLFW/glfw3.h>
 #include <utility>
 #include <cmath>
+#include <vector>
 #include "rectangle.hpp"
 #include "circle.hpp"
 
 
 int main(int argc, char *argv[]) {
     Window win{std::make_pair(800, 800)};
+
+    std::vector<Rectangle> rectangles;
+
+    rectangles.emplace_back(Vec2{50.0f, 50.0f}, Vec2{500.0f, 500.0f}, Color{1.0f, 0.0f, 1.0f});
+    rectangles.emplace_back(Vec2{75.0f, 750.0f}, Vec2{250.0f, 250.0f}, Color{0.0f, 0.0f, 1.0f});
+
+    std::vector<Circle> circles;
+
+    circles.emplace_back(Vec2{250.0f, 250.0f}, 50.0f, Color{1.0f, 1.0f, 0.0f});
+    circles.emplace_back(Vec2{250.0f, 250.0f}, 25.0f, Color{1.0f, 0.0f, 0.0f});
 
     while (!win.should_close()) {
         if (win.get_key(GLFW_KEY_ESCAPE) == GLFW_PRESS) {
@@ -56,15 +67,21 @@ int main(int argc, char *argv[]) {
 
         win.draw_text(text_offset_x, text_offset_y, font_size, display_text);
 
-        Rectangle r = Rectangle(Vec2{50.0f, 50.0f}, Vec2{500.0f, 500.0f}, Color{1.0f, 0.0f, 1.0f});
-        r.draw(win, 50.0f);
-        Rectangle re = Rectangle(Vec2{75.0f, 750.0f}, Vec2{250.0f, 250.0f}, Color{0.0f, 0.0f, 1.0f});
-        re.draw(win);
+        for (auto &rect : rectangles) {
+            if (rect.is_inside({(float) win.mouse_position().first, (float) win.mouse_position().second})) {
+                rect.draw(win, 5.f);
+            } else {
+                rect.draw(win);
+            }
+        }
 
-        Circle c = Circle(Vec2{250.0f,250.0f}, 50.0f, Color{1.0f,1.0f,0.0f});
-        c.draw(win);
-        Circle ci = Circle(Vec2{250.0f,250.0f}, 25.0f, Color{1.0f,0.0f,0.0f});
-        ci.draw(win, 10.0f);
+        for (auto &circle: circles) {
+            if (circle.is_inside({(float) win.mouse_position().first, (float) win.mouse_position().second})) {
+                circle.draw(win, 5.f);
+            } else {
+                circle.draw(win);
+            }
+        }
 
         win.update();
     }
