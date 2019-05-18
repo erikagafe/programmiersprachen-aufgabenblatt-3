@@ -76,8 +76,8 @@ int main()
 
     std::cout << "Vector v2 contains following elements" << std::endl;
 
-    for (auto iter = myVector.begin(); iter != myVector.end(); ++iter)
-        std::cout << *iter << std::endl;
+    for (unsigned int iter : myVector)
+        std::cout << iter << std::endl;
 
 
     return 0;

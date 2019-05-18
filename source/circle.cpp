@@ -4,10 +4,25 @@
 
 #include "circle.hpp"
 
-Circle::Circle() {}
+Circle::Circle () {
+    // nada
+}
 
-Circle::Circle(Vec2 const &position_, float const &radius_, Color const &color_) : position_(position_),
-                                                                                   radius_(radius_), color_(color_) {}
+Circle::Circle (Vec2 const &position, float const &radius, Color const &color) :
+        name_(""),
+        position_(position),
+        radius_(radius),
+        color_(color) {
+    // nada
+}
+
+Circle::Circle(std::string name, Vec2 const &position, float const &radius, Color const &color) :
+        name_(name),
+        position_(position),
+        radius_(radius),
+        color_(color) {
+    // nada
+}
 
 float Circle::circumference() const {
     if (std::abs(radius_) < 0.001f) /* null check */{
@@ -15,6 +30,13 @@ float Circle::circumference() const {
         throw std::runtime_error("Prohibited input");
     }
     return 2 * radius_ * M_PI;
+}
+
+std::string Circle::print()const {
+    return "Name: " + name_ + "\n"
+           + "Radius: " + std::to_string(radius_) + "\n"
+           + "Position : {" + std::to_string(position_.x) + ", " + std::to_string(position_.y) + "}\n"
+           + "Color: {" + std::to_string(color_.r) + ", " + std::to_string(color_.g) + ", " + std::to_string(color_.b) + "}\n";
 }
 
 float Circle::area() const {
@@ -68,6 +90,26 @@ bool Circle::is_inside(Vec2 const& point) const{
     float p= pow((point.x - position_.x),2.0f) + pow((point.y - position_.y),2.0f);
     return p < d_radius;
 
+}
+
+float Circle::get_radius() const {
+    return radius_;
+}
+
+std::ostream& operator <<(std::ostream& os, Circle const& c){
+    return os << c.print();
+}
+bool operator ==(const Circle& c1,const  Circle& c2){
+    return c1.get_radius() == c2.get_radius();
+
+}
+
+bool operator <(const Circle& c1,const Circle& c2){
+    return c1.get_radius() < c2.get_radius();
+}
+
+bool operator >(const Circle& c1, const Circle& c2){
+    return c1.get_radius() > c2.get_radius();
 }
 
 
