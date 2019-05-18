@@ -9,6 +9,8 @@
 #include <iterator>
 #include <map>
 #include<set>
+#include<vector>
+#include <algorithm>
 
 
 
@@ -19,7 +21,7 @@ int main()
     std::map<unsigned int, int> mapOfNumber;
     std::map<unsigned int, int>::iterator itMap;
     for (int i = 0; i <100; i++){
-        unsigned int j = rand() % 100;
+        unsigned int j = rand() % 100u;
         listOfNumbers.push_back(j);
         itMap = mapOfNumber.find(j);
         // Check if element exists in map or not
@@ -34,9 +36,7 @@ int main()
 
     }
 
-
-
-    std::list<unsigned int>::iterator it = listOfNumbers.begin();
+    auto it = listOfNumbers.begin();
     while(it != listOfNumbers.end())
     {
         std::cout<<(*it)<<"  ";
@@ -57,7 +57,7 @@ int main()
     }
 
 
-    std::map<unsigned int, int>::iterator iteratorMap = mapOfNumber.begin() ;
+    auto iteratorMap = mapOfNumber.begin() ;
     while(iteratorMap != mapOfNumber.end())
     {
         unsigned int key = iteratorMap->first;
@@ -66,6 +66,18 @@ int main()
         iteratorMap ++;
 
     }
+
+
+    // aufgabe 3.10
+
+    std::vector<unsigned int> myVector;
+    myVector.resize(listOfNumbers.size());
+    std::copy (listOfNumbers.begin(), listOfNumbers.end(), myVector.begin());
+
+    std::cout << "Vector v2 contains following elements" << std::endl;
+
+    for (auto iter = myVector.begin(); iter != myVector.end(); ++iter)
+        std::cout << *iter << std::endl;
 
 
     return 0;
