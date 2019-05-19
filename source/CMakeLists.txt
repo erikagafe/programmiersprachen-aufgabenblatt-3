@@ -116,3 +116,15 @@ target_link_libraries(aufgabe_11
         ${OPENGL_LIBRARIES}
         )
 add_dependencies(aufgabe_11 glfw nanovg ${COPY_BINARY})
+
+add_executable(aufgabe_12
+        aufgabe_12.cpp
+        glew.c
+        )
+target_link_libraries(aufgabe_12
+        glfw
+        ${GLFW_LIBRARIES}
+        nanovg
+        ${OPENGL_LIBRARIES}
+        )
+add_dependencies(aufgabe_12 glfw nanovg ${COPY_BINARY})
